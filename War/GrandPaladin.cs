@@ -16,7 +16,7 @@ internal class GrandPaladin : Warrior
 
         for (int i = 0; i < _maxTargets; i++)
         {
-            int enemyIndex = Utility.GetRandomNumber(enemyes.Count);
+            int enemyIndex = Utility.CreateRandomNumber(enemyes.Count);
             enemyes[enemyIndex].TakeDamage(Damage);
         }
     }

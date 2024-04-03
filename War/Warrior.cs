@@ -2,40 +2,38 @@
 
 internal abstract class Warrior
 {
-    private float _health;
     private float _maxHealth;
-    private float _damage;
-    private string _name;
 
     public Warrior(float maxHealth, float damage, string name)
     {
         _maxHealth = maxHealth;
-        _health = _maxHealth;
-        _damage = damage;
-        _name = name;
+        CurrentHealth = _maxHealth;
+        Damage = damage;
+        Name = name;
     }
 
-    public float CurrentHealth => _health;
+    public float CurrentHealth { get; protected set; }
 
-    public float Damage => _damage;
+    public float Damage { get; protected set; }
 
-    public bool IsAlive => _health > 0;
+    public string Name { get; protected set; }
 
-    public string Name => _name;
+    public bool IsAlive => CurrentHealth > 0;
 
     public virtual void Attack(List<Warrior> enemyes)
     {
-        if (enemyes.Count <= 0) return;
-        Console.WriteLine($"{this}атакую ");
+        if (enemyes.Count <= 0)
+            return;
+        Console.WriteLine($"{this}атакую");
     }
 
     public virtual void TakeDamage(float damage)
     {
-        _health -= damage;
+        CurrentHealth -= damage;
 
-        if (_health < 0)
+        if (CurrentHealth < 0)
         {
-            _health = 0;
+            CurrentHealth = 0;
         }
     }
 
@@ -47,7 +45,7 @@ internal abstract class Warrior
     public override string ToString()
     {
         ShowInfo();
+
         return null;
     }
-
 }

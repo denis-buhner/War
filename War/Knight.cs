@@ -12,7 +12,7 @@
         {
             base.Attack(enemyes);
 
-            Warrior enemyForAttack = enemyes[Utility.GetRandomNumber(enemyes.Count)];
+            Warrior enemyForAttack = enemyes[Utility.CreateRandomNumber(enemyes.Count)];
             enemyForAttack.TakeDamage(Damage);
         }
 

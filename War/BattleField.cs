@@ -10,10 +10,15 @@ internal class BattleField
 
         while (army1.IsAlive && army2.IsAlive)
         {
-            if (army1.IsAlive){}
+            if (army1.IsAlive)
+            {
                 army1.Attack(army2);
+            }
+
             if (army2.IsAlive)
+            {
                 army2.Attack(army1);
+            }
 
             Console.WriteLine($"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
                               $"{army1.Name} - в живых {army1.ArmyCount}.\n" +
@@ -26,7 +31,7 @@ internal class BattleField
 
     private void ShowWinner(Army army1, Army army2)
     {
-        if (army1.IsAlive && army2.IsAlive == false)
+        if (army1.IsAlive)
             Console.WriteLine($"Победила армия {army1.Name}");
         else
             Console.WriteLine($"Победила армия {army2.Name}");

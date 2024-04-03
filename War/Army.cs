@@ -8,6 +8,7 @@ internal class Army
     public Army(string name, int platoonSize = 100)
     {
         Name = name;
+
         _warriorTypes = new List<Type>
         {
             typeof(Knight),
@@ -19,8 +20,6 @@ internal class Army
         FormDetachment(platoonSize);
     }
 
-    public List<Warrior> Platoon => _platoon;
-
     public int ArmyCount => _platoon.Count;
 
     public string Name { get; }
@@ -31,12 +30,17 @@ internal class Army
     {
         Console.WriteLine($"-----------------\n" +
                           $"ход за армией {Name}");
-        foreach (var warior in _platoon)
+        foreach (var warrior in _platoon)
         {
-            warior.Attack(army.Platoon);
+           army.TakeDamage(warrior);
         }
 
         army.DeleteDeadWarriors();
+    }
+
+    public void TakeDamage(Warrior warrior)
+    {
+        warrior.Attack(_platoon);
     }
 
     public void DeleteDeadWarriors()
@@ -69,7 +73,7 @@ internal class Army
     {
         for (int i = 0; i < platoonSize; i++)
         {
-            Warrior warrior = CreateWarrior(_warriorTypes[Utility.GetRandomNumber(_warriorTypes.Count)]);
+            Warrior warrior = CreateWarrior(_warriorTypes[Utility.CreateRandomNumber(_warriorTypes.Count)]);
             _platoon.Add(warrior);
         }
     }

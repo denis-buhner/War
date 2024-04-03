@@ -15,7 +15,7 @@ internal class Gladiator : Warrior
         base.Attack(enemyes);
 
         float changedDmage = Damage + (Damage * _damageScale);
-        Warrior enemyForAttack = enemyes[Utility.GetRandomNumber(enemyes.Count)];
+        Warrior enemyForAttack = enemyes[Utility.CreateRandomNumber(enemyes.Count)];
         enemyForAttack.TakeDamage(changedDmage);
     }
 
